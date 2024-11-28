@@ -1,35 +1,21 @@
 using System;
 
-namespace Hausaufgaben
+namespace Hausaufgaben1
 {
     class ConverterProgram
     {
-        static string ToBinaryString(int value)
+        static string SimpleConverter(int input, int multiplier)
         {
-            string AsBinary = "";
+            var output = "";
 
-            while (value > 0)
+            while (input > 0)
             {
-                int remainder = value % 2;
-                AsBinary = remainder + AsBinary;
-                value /= 2;
+                int remainder = input % multiplier;
+                output = remainder + output;
+                input /= multiplier;
             }
 
-            return AsBinary;
-        }
-
-        static string ToOctalString(int value)
-        {
-            string AsOctal = "";
-
-            while (value > 0)
-            {
-                int remainder = value % 8;
-                AsOctal = remainder + AsOctal;
-                value /= 8;
-            }
-
-            return AsOctal;
+            return output;
         }
 
         static string ToHexaDecimalString(int value)
@@ -51,9 +37,12 @@ namespace Hausaufgaben
         static void Main(string[] args)
         {
             int input = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Binär: " + ToBinaryString(input));
-            Console.WriteLine("Octal: " + ToOctalString(input));
-            Console.WriteLine("HexaDezimal: " + ToHexaDecimalString(input));
+            Console.WriteLine($"The number {input} in");
+            Console.WriteLine("=============================");
+            Console.WriteLine($"Binary\t\t: {SimpleConverter(input, 2)}");
+            Console.WriteLine($"Octal\t\t: {SimpleConverter(input, 8)}");
+            Console.WriteLine($"HexaDecimal\t: {ToHexaDecimalString(input)}");
         }
+        
     }
 }
